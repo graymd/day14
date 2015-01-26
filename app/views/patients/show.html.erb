@@ -1,0 +1,74 @@
+<strong>Information for:</strong>
+<br>
+<strong>Patient:</strong> <%= @patient.last_name + ", " + @patient.first_name %>
+<br>
+<strong>Patient DOB:</strong>
+<%= @patient.date_of_birth %>
+<br>
+<strong>Patient Illness Description:</strong>
+<%= @patient.description %>
+<br>
+<strong>Patient Gender:</strong>
+<%= @patient.gender %>
+<br>
+<strong>Patient Blood Type:</strong>
+<%= @patient.blood_type %> 
+<br>
+<%= link_to "Edit Patient/Medication", edit_clinic_patient_path(@clinic, @patient) %>
+|
+<%= link_to "Delete Patient", clinic_patient_path(@clinic, @patient), method: :delete %>
+<br>
+<%= link_to "Return to Clinic", clinic_path(@clinic) %>
+|
+<%= link_to "Return to Main", root_path %>
+<br>
+<br>
+<strong>Patient Medications:</strong>
+<br>
+<ul>
+  <% @medications.each do |medication| %>
+    <li>
+      <strong>Medication Name:</strong>
+      <%= medication.name %>
+      <br>
+      <strong>Company:</strong>
+      <%= medication.company %>
+      <br>
+      <strong>Adverse Reactions:</strong>
+      <%= medication.adverse_reactions %>
+      <br>
+      <strong>Generic Options Available:</strong>
+      <%= medication.generic_option %>
+      <br>
+    <br>
+    <br>
+    </li>
+  <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
