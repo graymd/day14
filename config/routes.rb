@@ -16,7 +16,11 @@ Rails.application.routes.draw do
       member do
       post :create_doctor
     end
-      resources :patients
+      resources :patients do
+        member do
+          post :create_doctor
+        end
+      end
     end
     resources :medications
   # Example resource route with options:

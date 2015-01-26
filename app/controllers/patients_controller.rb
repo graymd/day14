@@ -7,6 +7,8 @@ class PatientsController < ApplicationController
    @clinic = Clinic.find params[:clinic_id]
    @patient = Patient.find params[:id]
    @medications = @patient.medications
+   @doctor = Doctor.new
+   @doctors = @patient.doctors
   end
 
 
@@ -17,9 +19,9 @@ class PatientsController < ApplicationController
   end
 
   def create
+    @patient = @clinic.patients.create patient_params
     @clinic = Clinic.find params[:clinic_id]
     @medications = Medication.all
-    @patient = @clinic.patients.create patient_params
     if @clinic.patients.create
       flash[:notice] = 'Patient info was successfully saved.'
       redirect_to clinic_path(@clinic)
@@ -45,7 +47,6 @@ class PatientsController < ApplicationController
       flash[:notice] = 'Patient info was NOT successfully updated.'
       render :edit
     end
-
   end
 
   def destroy
@@ -59,6 +60,12 @@ class PatientsController < ApplicationController
     end
   end
 
+  def create_doctor
+    @clinic = Clinic.find params[:clinic_id]
+    @patient = @clinic.patients.find params[:id] 
+    @doctor = @patient.doctors.create doctor_params
+    redirect_to clinic_patient_path(@clinic, @patient)
+  end
 
 private
   def patient_params
@@ -76,4 +83,11 @@ private
   def set_clinic
     @clinic = Clinic.find(params[:id])
   end
+
+  def doctor_params
+  params.require(:doctor).permit(
+    :doctor_name
+    )
+  end
+
 end
