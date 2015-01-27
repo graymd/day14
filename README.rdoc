@@ -1,3 +1,17 @@
+Hospital_v3 created 26 Jan 2015:
+"Day 14 - January 26th 2015 - (Hospital v3)
+
+I want you to create a new entity called "Doctors" that live inside of hospitals and/or patients. The Doctors should have a polymorphic relationship between patients and Hospitals. They should not belong to both. Think of these doctors as independent physicians who work wherever they want, consulting for the patients who go to the hospital.
+
+I also want you to change the relationship between patients and medications. Make them go through a join table
+
+Please use HAML."
+
+I have been unable to figure out how to redirect back to the patient show page after deleting a doctor from the list.
+
+I am currently working on changing clinics show.html.erb to show.html.haml without use of converter for practice.
+------------------------------------------------------------------------------------
+
 The project was started 21 Jan 2015.  
 The project runs on ruby 2.2.0 and Rails 4.2.0.
 21 Jan 2015:

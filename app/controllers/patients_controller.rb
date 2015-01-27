@@ -67,6 +67,12 @@ class PatientsController < ApplicationController
     redirect_to clinic_patient_path(@clinic, @patient)
   end
 
+  def destroy_doctor
+    @doctor = Doctor.find params[:id]
+    @doctor.destroy
+    redirect_to root_path
+  end
+
 private
   def patient_params
     params.require(:patient).permit(
