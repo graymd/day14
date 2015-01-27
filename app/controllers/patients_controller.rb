@@ -70,7 +70,7 @@ class PatientsController < ApplicationController
   def destroy_doctor
     @doctor = Doctor.find params[:id]
     @doctor.destroy
-    redirect_to root_path
+    redirect_to clinic_patient_path(@doctor.doctorable.clinic, @doctor.doctorable)
   end
 
 private
