@@ -51,9 +51,10 @@
 <strong>Clinic Doctors:</strong>
 <br>
 <ul>
-  <% @clinic.doctors.each do |doctor| %>
+  <% @doctors.each do |doctor| %>
     <li>
       <%= doctor.doctor_name %>
+      <%= link_to "Delete Doctor", destroy_doctor_clinic_path(doctor), method: :delete %>
       <br>
     </li>
   <% end %>
@@ -64,10 +65,6 @@
   <br>
   <%= f.submit %>
 <% end %>
-
-
-
-
 
 
 

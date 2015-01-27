@@ -1,0 +1,77 @@
+%strong Information for:
+%br/
+%strong Patient:
+= @patient.last_name + ", " + @patient.first_name
+%br/
+%strong Patient DOB:
+= @patient.date_of_birth
+%br/
+%strong Patient Illness Description:
+= @patient.description
+%br/
+%strong Patient Gender:
+= @patient.gender
+%br/
+%strong Patient Blood Type:
+= @patient.blood_type
+%br/
+= link_to "Edit Patient/Medication", edit_clinic_patient_path(@clinic, @patient)
+|
+\#{link_to "Delete Patient", clinic_patient_path(@clinic, @patient), method: :delete}
+%br/
+= link_to "Return to Clinic", clinic_path(@clinic)
+|
+\#{link_to "Return to Main", root_path}
+%br/
+%br/
+%strong Patient Medications:
+%br/
+%ul
+  - @medications.each do |medication|
+    %li
+      %strong Medication Name:
+      = medication.name
+      %br/
+      %strong Company:
+      = medication.company
+      %br/
+      %strong Adverse Reactions:
+      = medication.adverse_reactions
+      %br/
+      %strong Generic Options Available:
+      = medication.generic_option
+      %br/
+%strong Patient Doctor:
+%br
+- @doctors.each do |doctor|
+  = doctor.doctor_name
+  %br
+%br
+= form_for @doctor, url: create_doctor_clinic_patient_path(@clinic, @patient) do |f|
+  = f.label :doctor_name
+  = f.text_area :doctor_name
+  = f.submit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

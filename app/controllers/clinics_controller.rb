@@ -4,9 +4,10 @@ class ClinicsController < ApplicationController
   end
 
   def show
-    set_clinic
+    @clinic = Clinic.find params[:id]
     @patients = @clinic.patients
     @doctor = Doctor.new
+    @doctors = @clinic.doctors
   end
   
   def new
@@ -38,6 +39,13 @@ class ClinicsController < ApplicationController
     @clinic = Clinic.find params[:id]
     @doctor = @clinic.doctors.create doctor_params
     redirect_to clinic_path(@clinic)
+  end
+
+  def destroy_doctor
+    # @clinic = Clinic.find params[:id]
+    @doctor = Doctor.find params[:id]
+    @doctor.destroy
+    redirect_to @doctor.doctorable
   end
 
 private

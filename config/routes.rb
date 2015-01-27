@@ -15,10 +15,12 @@ Rails.application.routes.draw do
     resources :clinics do
       member do
       post :create_doctor
+      delete :destroy_doctor
     end
       resources :patients do
         member do
           post :create_doctor
+          delete :destroy_doctor
         end
       end
     end
